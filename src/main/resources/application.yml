@@ -1,0 +1,23 @@
+spring:
+  profiles.active: "@spring.profiles.active@"
+  datasource:
+     url: "@datasource.url@"
+     driver-class-name: "@datasource.driver@"
+     username: "@datasource.username@"
+     password: "@datasource.username@"
+  jpa:
+     show-sql: true
+     hibernate.ddl-auto: "@datasource.jpa.ddl-auto@"
+     database-platform: "@datasource.dialect@"
+    
+logging:
+  path: ./logs
+  level:
+    com.look: trace
+
+server:
+  port: 9000
+  contextPath: 
+
+security.sessions: if-required
+
