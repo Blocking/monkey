@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 
 import com.look.monkey.entity.Customer;
 import com.look.monkey.repository.CustomerRepository;
-
+/**
+ * 项目启动后 初始化数据
+ */
 @Component
 public class InitData implements CommandLineRunner{
 	
@@ -15,10 +17,8 @@ public class InitData implements CommandLineRunner{
 
 	@Override
 	public void run(String... paramArrayOfString) throws Exception {
-		Customer c0 = new Customer("佳佳","泰迪");
-		Customer c1 = new Customer("广磊","笨熊");
-		re.save(c0);
-		re.save(c1);
+		re.save(new Customer("佳佳","泰迪"));
+		re.save(new Customer("广磊","笨熊"));
 	}
 
 }
