@@ -12,30 +12,28 @@ package com.look.monkey.service.impl;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.look.monkey.entity.QUser;
 import com.look.monkey.entity.User;
 import com.look.monkey.repository.UserRepository;
+import com.look.monkey.repository.Abstract.AbstractRepository;
 import com.look.monkey.service.UsersService;
-import com.querydsl.jpa.impl.JPAQuery;
 
-@Repository
+@Service
 @Transactional
-public class UsersServiceImpl implements UsersService {
+public class UsersServiceImpl extends AbstractRepository<User> implements UsersService {
 
-    @Autowired
-    private EntityManager em;
     @Autowired
     private UserRepository userRepository;
+    
+    final QUser qUser = QUser.user;
 
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -44,9 +42,7 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public User getUserByUserName(final String username) {
-        final QUser qUser = QUser.user;
-        final JPAQuery<User> query = new JPAQuery<>(this.em);
-        return query.from(qUser).select(qUser).where(qUser.username.contains(username)).fetchOne();
+        return this.selectFrom(qUser).where(qUser.username.contains(username)).fetchOne();
     }
 
     @Override

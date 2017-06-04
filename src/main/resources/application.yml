@@ -4,7 +4,7 @@ spring:
      url: "@datasource.url@"
      driver-class-name: "@datasource.driver@"
      username: "@datasource.username@"
-     password: "@datasource.username@"
+     password: "@datasource.password@"
   jpa:
      show-sql: true
      hibernate.ddl-auto: "@datasource.jpa.ddl-auto@"
