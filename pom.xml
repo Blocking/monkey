@@ -49,7 +49,7 @@
 		  <groupId>com.querydsl</groupId>
 		  <artifactId>querydsl-apt</artifactId>
 		  <version>${querydsl.version}</version><!--$NO-MVN-MAN-VER$-->
-		  <scope>provided</scope>
+		  <scope>compile</scope>
 		</dependency>
 		<dependency>
 		  <groupId>com.querydsl</groupId>
