@@ -178,7 +178,7 @@
 				<datasource.username>root</datasource.username>
 				<datasource.password>root</datasource.password>
 				<datasource.dialect>org.hibernate.dialect.MySQL57InnoDBDialect</datasource.dialect>
-				<datasource.jpa.ddl-auto>create-drop</datasource.jpa.ddl-auto>
+				<datasource.jpa.ddl-auto>none</datasource.jpa.ddl-auto>
 			</properties>
 			<dependencies>
 				<dependency>
