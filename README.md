@@ -22,5 +22,4 @@
    http://projects.spring.io/spring-boot/
    http://docs.spring.io/spring-boot/docs/1.4.0.RELEASE/reference/htmlsingle/
    http://docs.spring.io/spring-boot/docs/1.4.0.RELEASE/reference/html/common-application-properties.html （常用配置项）
-   http://www.infoq.com/cn/articles/microframeworks1-spring-boot
-   https://www.gitbook.com/book/qbgbook/spring-boot-reference-guide-zh/details
+   http://www.infoq.com/cn/articles/microframeworks1-spring-boot https://www.gitbook.com/book/qbgbook/spring-boot-reference-guide-zh/details
