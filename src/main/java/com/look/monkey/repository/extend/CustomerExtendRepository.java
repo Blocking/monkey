@@ -1,5 +1,6 @@
 package com.look.monkey.repository.extend;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -23,6 +24,13 @@ public class CustomerExtendRepository extends AbstractRepository<Customer> {
 				.selectFrom(qCustomer)
 				.where(qCustomer.lastName.contains(lastName))
 				.fetchFirst();
+	}
+
+	public List<Customer> getAll(){
+		List<String> ids = new ArrayList<>();
+		ids.add("佳佳");
+//		ids.add("广磊");
+		return  this.selectFrom(qCustomer).where(qCustomer.firstName.in(ids)).fetch();
 	}
 
 }
