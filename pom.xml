@@ -38,6 +38,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!--使用thymeleaf 作为页面模板引擎-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -73,17 +78,7 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- websocket -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
-        </dependency>
-        <!-- websocket -->
         <!-- js相关 -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>webjars-locator</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>sockjs-client</artifactId>
@@ -178,7 +173,7 @@
 				<datasource.username>root</datasource.username>
 				<datasource.password>root</datasource.password>
 				<datasource.dialect>org.hibernate.dialect.MySQL57InnoDBDialect</datasource.dialect>
-				<datasource.jpa.ddl-auto>none</datasource.jpa.ddl-auto>
+				<datasource.jpa.ddl-auto>create-drop</datasource.jpa.ddl-auto>
 			</properties>
 			<dependencies>
 				<dependency>

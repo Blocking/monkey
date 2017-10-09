@@ -35,9 +35,8 @@ public class UsersServiceImpl extends AbstractRepository<User> implements UsersS
     
     final QUser qUser = QUser.user;
 
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    public PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -52,7 +51,7 @@ public class UsersServiceImpl extends AbstractRepository<User> implements UsersS
 
     @Override
     public User save(final User user) {
-        user.setPassword(this.passwordEncoder().encode(user.getPassword()));
+        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         return this.userRepository.save(user);
     }
 
