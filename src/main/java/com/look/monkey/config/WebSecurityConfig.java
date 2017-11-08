@@ -2,7 +2,6 @@ package com.look.monkey.config;
 
 import com.look.monkey.service.UsersService;
 import com.look.monkey.service.impl.UsersServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 @Configuration
 @EnableWebSecurity
@@ -44,9 +44,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/webjars/**");
     }
 
-    @Autowired
-    private UsersService userService;
-
     @Bean
     public UsersService userService() {
         return new UsersServiceImpl();
@@ -60,12 +57,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final AuthenticationManagerBuilder auth)
             throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userService()).passwordEncoder(passwordEncoder());
     }
 
     @Override
     public UserDetailsService userDetailsServiceBean() throws Exception {
-        return userService;
+        return userService();
     }
 
 }
