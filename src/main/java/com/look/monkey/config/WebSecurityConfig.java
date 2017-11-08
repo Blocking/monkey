@@ -1,5 +1,7 @@
 package com.look.monkey.config;
 
+import com.look.monkey.service.UsersService;
+import com.look.monkey.service.impl.UsersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,7 +45,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    private UserDetailsService userService;
+    private UsersService userService;
+
+    @Bean
+    public UsersService userService() {
+        return new UsersServiceImpl();
+    }
     
     @Bean
     public PasswordEncoder passwordEncoder() {
