@@ -16,7 +16,7 @@ logging:
     com.look: trace
 
 server:
-  port: 9000
+  port: 80
   contextPath: 
 
 security.sessions: if-required
