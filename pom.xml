@@ -78,6 +78,11 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+        <!-- spring-boot 健康监控 -->
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
         <!-- js相关 -->
         <dependency>
             <groupId>org.webjars</groupId>
