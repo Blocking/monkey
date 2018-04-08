@@ -10,17 +10,11 @@ import com.look.monkey.bean.MessageDTO;
 import com.look.monkey.entity.Customer;
 import com.look.monkey.entity.QCustomer;
 import com.look.monkey.repository.Abstract.AbstractRepository;
-import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.QueryResults;
-import com.querydsl.core.Tuple;
 import com.querydsl.core.types.Projections;
-import com.querydsl.core.types.dsl.DslExpression;
 import com.querydsl.example.sql.QCinema;
 import com.querydsl.example.sql.QOriginalReport;
 import com.querydsl.example.sql.QOriginalReportProGrammeData;
 import com.querydsl.example.sql.QOriginalReportSessionData;
-import com.querydsl.jpa.JPAExpressions;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.sql.JPASQLQuery;
 import com.querydsl.sql.MySQLTemplates;
 
@@ -87,67 +81,7 @@ public class CustomerExtendRepository extends AbstractRepository<Customer> {
 	}
 	
 	
-	public void testQueryDSL() {
-		 com.look.monkey.entity.report.OriginalReport.QOriginalReportSessionData qOriginalReportSessionData =  com.look.monkey.entity.report.OriginalReport.QOriginalReportSessionData.originalReportSessionData;
-		 com.look.monkey.entity.cinema.QCinema qCinema = com.look.monkey.entity.cinema.QCinema.cinema;
-	        com.look.monkey.entity.report.OriginalReport.QOriginalReportProGrammeData qOriginalReportProGrammeData = com.look.monkey.entity.report.OriginalReport.QOriginalReportProGrammeData.originalReportProGrammeData;
-	        BooleanBuilder where = new BooleanBuilder();
-	        JPAQuery<Tuple> query = new JPAQuery<>(em.get());
-	        		
-	        query.select(qCinema.province.name, qCinema.cinemaChain.name, qCinema.shortName, qOriginalReportProGrammeData.programmeCode,
-	                qOriginalReportProGrammeData.programmeSales, qOriginalReportProGrammeData.programmeOtherSales, qOriginalReportSessionData.originalReport.businessDate)
-	        .from(qCinema, qOriginalReportSessionData, qOriginalReportProGrammeData);
-
-	        where.and(qCinema.code.eq(qOriginalReportSessionData.originalReport.cinemaCode));
-	        where.and(qOriginalReportProGrammeData.originalReportSessionData.id.eq(qOriginalReportSessionData.id));
-	        
-	        query.where(where);
-	        Long total = query.fetchCount();
-	        query.offset(0);
-	        query.limit(10);
-	        List<Tuple> list = query.fetch();
-	        log.info("total:[{}]====tupleSize:[{}]===tuple:{}",total,list.size(),list);
-	}
 	
-	
-	public void testQueryDSL1() {
-		com.look.monkey.entity.report.OriginalReport.QOriginalReportProGrammeData qOriginalReportProGrammeData = com.look.monkey.entity.report.OriginalReport.QOriginalReportProGrammeData.originalReportProGrammeData;
-	        BooleanBuilder where = new BooleanBuilder();
-	        JPAQuery<Tuple> query = new JPAQuery<>(em.get());
-	        query.select(qOriginalReportProGrammeData.originalReportSessionData.originalReport.cinemaCode, qOriginalReportProGrammeData.programmeCode,
-	                qOriginalReportProGrammeData.programmeSales.sum(), 
-	                qOriginalReportProGrammeData.programmeOtherSales.sum(),
-	                qOriginalReportProGrammeData.originalReportSessionData.originalReport.businessDate)
-	        .from(qOriginalReportProGrammeData)
-	        ;
-	        
-	        
-	        query.where(where);
-	        
-	        List<String> m =  query.clone().select(qOriginalReportProGrammeData.originalReportSessionData.originalReport.cinemaCode.concat(qOriginalReportProGrammeData.programmeCode)).distinct().fetch();
-	        
-	        log.info("m:[{}]",m.size());
-	        
-	        query.groupBy(qOriginalReportProGrammeData.originalReportSessionData.originalReport.cinemaCode, qOriginalReportProGrammeData.programmeCode,
-	        		qOriginalReportProGrammeData.originalReportSessionData.originalReport.businessDate);
-	        
-	        Long total = 0l;//query.fetchCount();
-	        query.offset(0);
-	        query.limit(200);
-	        List<Tuple> list = query.fetch();
-	        log.info("total:[{}]====tupleSize:[{}]===tuple:{}",total,list.size(),list);
-	        
-	       /* long count = (Long)em.get().createQuery("SELECT\r\n" + 
-	        		"	count(\r\n" + 
-	        		"		DISTINCT originalReportProGrammeData.originalReportSessionData.originalReport.cinemaCode,\r\n" + 
-	        		"		originalReportProGrammeData.programmeCode,\r\n" + 
-	        		"		originalReportProGrammeData.originalReportSessionData.originalReport.businessDate\r\n" + 
-	        		"	)\r\n" + 
-	        		"FROM\r\n" + 
-	        		"	OriginalReportProGrammeData originalReportProGrammeData").getSingleResult();
-	        log.info("count::{}",count);*/
-	        
-	}
 	
 	
 	public void testQueryDSL2() {

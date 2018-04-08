@@ -36,21 +36,6 @@ public class CustomerController {
 		return this.customerExtendRepository.testSqlQueryDSL();
 	}
 	
-	@GetMapping(value="/testQueryDSL",produces = MediaType.APPLICATION_JSON_VALUE)
-	public void findQuery(){
-		 this.customerExtendRepository.testQueryDSL();
-	}
-	
-	@GetMapping(value="/testQueryDSL1",produces = MediaType.APPLICATION_JSON_VALUE)
-	public void findQuery1(){
-		 this.customerExtendRepository.testQueryDSL1();
-	}
-	
-	@GetMapping(value="/testQueryDSL2",produces = MediaType.APPLICATION_JSON_VALUE)
-	public void findQuery2(){
-		 this.customerExtendRepository.testQueryDSL2();
-	}
-	
 	
 	@RequestMapping(value="/findAll",method=RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Customer> findAll(){
