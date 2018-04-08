@@ -1,5 +1,6 @@
 package com.look.monkey.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.repository.Repository;
@@ -14,5 +15,7 @@ public interface CustomerRepository extends Repository<Customer, Long> {
     List<Customer> findAll();
     
     Customer save(Customer customer);
+    
+    Collection<NamesOnly> findByFirstName(String lastName);
 
 }

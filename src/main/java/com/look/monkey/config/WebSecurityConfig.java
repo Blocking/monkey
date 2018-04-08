@@ -20,9 +20,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        //.antMatchers("/**").permitAll()//暂时放开一切请求
         http
         .authorizeRequests()
+        .antMatchers("/**").permitAll()//暂时放开一切请求
                 //.antMatchers("/", "/index").permitAll()
          .anyRequest().authenticated()
         .and()

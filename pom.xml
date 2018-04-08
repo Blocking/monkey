@@ -105,6 +105,24 @@
             <version>3.1.0</version>
         </dependency>
          <!-- js相关 -->
+        <!--  <dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-sql</artifactId>
+			<version>3.7.4</version>
+		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/com.querydsl/querydsl-sql -->
+		<dependency>
+		    <groupId>com.querydsl</groupId>
+		    <artifactId>querydsl-sql</artifactId>
+		    <version>4.2.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+				
 	</dependencies>
 
 	<build>
@@ -135,15 +153,102 @@
 			        </execution>
 			      </executions>
 		    </plugin>
+		    
+		    
+		    
+		  <!--   <plugin>
+			  <groupId>com.mysema.querydsl</groupId>
+			  <artifactId>querydsl-maven-plugin</artifactId>
+			  <version>3.7.4</version>
+			  <executions>
+			    <execution>
+			      <goals>
+			        <goal>export</goal>
+			      </goals>
+			    </execution>            
+			  </executions>
+			  <configuration>
+			    <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+			    <jdbcUrl>jdbc:mysql://localhost:3306/monkey</jdbcUrl>
+			    <jdbcUser>root</jdbcUser>
+			    <jdbcPassword>root</jdbcPassword>
+			    <packageName>com.querydsl.example.sql</packageName>
+			    <targetFolder>${project.basedir}/target/generated-sources/java</targetFolder> 
+			  </configuration>
+			  <dependencies>
+			    <dependency>
+					<groupId>mysql</groupId>
+					<artifactId>mysql-connector-java</artifactId>
+					<version>5.1.41</version>
+				</dependency>
+			  </dependencies>
+			</plugin> -->
+			<plugin>
+			<groupId>com.querydsl</groupId>
+			  <artifactId>querydsl-maven-plugin</artifactId>
+			  <version>${querydsl.version}</version>
+			  <executions>
+			    <execution>
+			      <goals>
+			        <goal>export</goal>
+			      </goals>
+			    </execution>            
+			  </executions>
+			  <configuration>
+			    <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+			    <jdbcUrl>jdbc:mysql://localhost:3306/monkey</jdbcUrl>
+			    <jdbcUser>root</jdbcUser>
+			    <jdbcPassword>root</jdbcPassword>
+			    <packageName>com.querydsl.example.sql</packageName>
+			    <targetFolder>${project.basedir}/target/generated-sources/java</targetFolder> 
+			  </configuration>
+			  <dependencies>
+			    <dependency>
+					<groupId>mysql</groupId>
+					<artifactId>mysql-connector-java</artifactId>
+					<version>5.1.41</version>
+				</dependency>
+			  </dependencies>
+			</plugin>
+			
+			
+			
+		    
+		   <!--  <plugin>
+		        <groupId>com.querydsl</groupId>
+		        <artifactId>querydsl-maven-plugin</artifactId>
+		        <version>4.2.1</version>
+		        <executions>
+		          <execution>
+		            <goals>
+		              <goal>export</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		        <configuration>
+		          <jdbcDriver>org.h2.Driver</jdbcDriver>
+		          <jdbcUrl>jdbc:h2:mem:;INIT=runscript from 'file:${project.baseUri}/src/main/resources/001_schema.sql'</jdbcUrl>
+		          <jdbcUser>sa</jdbcUser>
+		          <customTypes>
+		            <customType>com.querydsl.sql.types.DateTimeType</customType>
+		            <customType>com.querydsl.sql.types.LocalDateType</customType>
+		          </customTypes>
+		          <packageName>com.querydsl.example.sql</packageName>
+		          <targetFolder>${project.basedir}/target/generated-sources/java</targetFolder>
+		        </configuration>
+		      </plugin> -->
+		      
+		      
+		      
 		</plugins>
 	</build>
-	  <repositories>
+	 <!--  <repositories>
         <repository>
             <id>spring-releases</id>
             <name>Spring Releases</name>
             <url>https://repo.spring.io/libs-release</url>
         </repository>
-    </repositories>
+    </repositories> -->
     
     <profiles>
 		<profile>
@@ -178,7 +283,7 @@
 				<datasource.username>root</datasource.username>
 				<datasource.password>root</datasource.password>
 				<datasource.dialect>org.hibernate.dialect.MySQL57InnoDBDialect</datasource.dialect>
-				<datasource.jpa.ddl-auto>create-drop</datasource.jpa.ddl-auto>
+				<datasource.jpa.ddl-auto>update</datasource.jpa.ddl-auto>
 			</properties>
 			<dependencies>
 				<dependency>

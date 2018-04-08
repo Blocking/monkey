@@ -14,9 +14,10 @@ logging:
   path: ./logs
   level:
     com.look: trace
+    com.querydsl.jpa.impl: debug
 
 server:
-  port: 80
+  port: 8080
   contextPath: 
 
 security.sessions: if-required

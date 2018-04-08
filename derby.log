@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Apr 04 22:05:19 CST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0162-90f9-e700-00000b05a3c0 
+on database directory C:\Users\12232\git\monkey\target\demoDB with class loader ClassRealm[plugin>com.querydsl:querydsl-maven-plugin:4.1.3, parent: sun.misc.Launcher$AppClassLoader@55f96302] 
+Loaded from file:/D:/soft/maven3/repository/org/apache/derby/derby/10.13.1.1/derby-10.13.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_121-b13
+user.dir=C:\Users\12232\git\monkey
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
