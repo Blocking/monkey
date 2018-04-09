@@ -18,7 +18,6 @@ logging:
 
 server:
   port: 8080
-  contextPath: 
-
-security.sessions: if-required
+  servlet:
+    context-path: 
 

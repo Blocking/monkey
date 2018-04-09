@@ -31,7 +31,7 @@ public class InitData implements CommandLineRunner{
 		re.save(new Customer("佳佳","泰迪"));
 		re.save(new Customer("广磊","笨熊"));
 		User user = new User();
-		user.setUsername("admin");
+		user.setUsername("admin@123.com");
 		user.setPassword(this.passwordEncoder.encode("123456"));
 		userRepository.save(user);
 	}

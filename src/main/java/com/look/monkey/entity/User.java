@@ -3,6 +3,7 @@ package com.look.monkey.entity;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
@@ -23,7 +24,9 @@ public class User extends BaseEntity implements UserDetails{
 	
 	private static final long serialVersionUID = 9059490884279123435L;
 	
+	@Column(unique=true,nullable=false,length=120)
 	private String username;
+	
 	private String password;
 	@Email
 	private String email;

@@ -1,10 +1,9 @@
 package com.look.nio;
 
-import org.junit.Test;
-
-import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
+
+import org.junit.Test;
 
 /**
  * Created by 12232 on 2017/8/29.
