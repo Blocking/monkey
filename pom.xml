@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
+		<version>2.0.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -94,35 +94,26 @@
             <artifactId>stomp-websocket</artifactId>
             <version>2.3.3</version>
         </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>3.3.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>3.1.0</version>
-        </dependency>
+       <!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>bootstrap</artifactId>
+		    <version>4.0.0-2</version>
+		</dependency>
+      <!-- https://mvnrepository.com/artifact/org.webjars/jquery -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>3.3.1</version>
+		</dependency>
+
          <!-- js相关 -->
-        <!--  <dependency>
-			<groupId>com.mysema.querydsl</groupId>
-			<artifactId>querydsl-sql</artifactId>
-			<version>3.7.4</version>
-		</dependency> -->
 		<!-- https://mvnrepository.com/artifact/com.querydsl/querydsl-sql -->
 		<dependency>
 		    <groupId>com.querydsl</groupId>
 		    <artifactId>querydsl-sql</artifactId>
 		    <version>4.2.1</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.3.2</version>
-		</dependency>
-				
 	</dependencies>
 
 	<build>
@@ -154,35 +145,6 @@
 			      </executions>
 		    </plugin>
 		    
-		    
-		    
-		  <!--   <plugin>
-			  <groupId>com.mysema.querydsl</groupId>
-			  <artifactId>querydsl-maven-plugin</artifactId>
-			  <version>3.7.4</version>
-			  <executions>
-			    <execution>
-			      <goals>
-			        <goal>export</goal>
-			      </goals>
-			    </execution>            
-			  </executions>
-			  <configuration>
-			    <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
-			    <jdbcUrl>jdbc:mysql://localhost:3306/monkey</jdbcUrl>
-			    <jdbcUser>root</jdbcUser>
-			    <jdbcPassword>root</jdbcPassword>
-			    <packageName>com.querydsl.example.sql</packageName>
-			    <targetFolder>${project.basedir}/target/generated-sources/java</targetFolder> 
-			  </configuration>
-			  <dependencies>
-			    <dependency>
-					<groupId>mysql</groupId>
-					<artifactId>mysql-connector-java</artifactId>
-					<version>5.1.41</version>
-				</dependency>
-			  </dependencies>
-			</plugin> -->
 			<plugin>
 			<groupId>com.querydsl</groupId>
 			  <artifactId>querydsl-maven-plugin</artifactId>
@@ -211,44 +173,15 @@
 			  </dependencies>
 			</plugin>
 			
-			
-			
-		    
-		   <!--  <plugin>
-		        <groupId>com.querydsl</groupId>
-		        <artifactId>querydsl-maven-plugin</artifactId>
-		        <version>4.2.1</version>
-		        <executions>
-		          <execution>
-		            <goals>
-		              <goal>export</goal>
-		            </goals>
-		          </execution>
-		        </executions>
-		        <configuration>
-		          <jdbcDriver>org.h2.Driver</jdbcDriver>
-		          <jdbcUrl>jdbc:h2:mem:;INIT=runscript from 'file:${project.baseUri}/src/main/resources/001_schema.sql'</jdbcUrl>
-		          <jdbcUser>sa</jdbcUser>
-		          <customTypes>
-		            <customType>com.querydsl.sql.types.DateTimeType</customType>
-		            <customType>com.querydsl.sql.types.LocalDateType</customType>
-		          </customTypes>
-		          <packageName>com.querydsl.example.sql</packageName>
-		          <targetFolder>${project.basedir}/target/generated-sources/java</targetFolder>
-		        </configuration>
-		      </plugin> -->
-		      
-		      
-		      
 		</plugins>
 	</build>
-	 <!--  <repositories>
+	   <repositories>
         <repository>
             <id>spring-releases</id>
             <name>Spring Releases</name>
             <url>https://repo.spring.io/libs-release</url>
         </repository>
-    </repositories> -->
+    </repositories> 
     
     <profiles>
 		<profile>

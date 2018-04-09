@@ -40,7 +40,6 @@ public class CustomerExtendRepository extends AbstractRepository<Customer> {
 	public List<Customer> getAll(){
 		List<String> ids = new ArrayList<>();
 		ids.add("佳佳");
-//		ids.add("广磊");
 		return  this.selectFrom(qCustomer).where(qCustomer.firstName.in(ids)).fetch();
 	}
 	

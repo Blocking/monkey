@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.Email;
 
-import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -28,7 +28,7 @@ public class User extends BaseEntity implements UserDetails{
 	@Email
 	private String email;
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Role> role;
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
