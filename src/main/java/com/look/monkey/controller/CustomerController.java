@@ -7,13 +7,11 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.look.monkey.bean.MessageDTO;
 import com.look.monkey.entity.Customer;
 import com.look.monkey.repository.CustomerRepository;
 import com.look.monkey.repository.NamesOnly;
@@ -29,12 +27,6 @@ public class CustomerController {
 	@Autowired
 	private CustomerExtendRepository customerExtendRepository;
 	
-	
-	
-	@GetMapping(value="/test",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<MessageDTO> findest(){
-		return this.customerExtendRepository.testSqlQueryDSL();
-	}
 	
 	
 	@RequestMapping(value="/findAll",method=RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)

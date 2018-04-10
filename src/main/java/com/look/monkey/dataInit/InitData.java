@@ -33,7 +33,7 @@ public class InitData implements CommandLineRunner{
 		User user = new User();
 		user.setUsername("admin@123.com");
 		user.setPassword(this.passwordEncoder.encode("123456"));
-		userRepository.save(user);
+//		userRepository.save(user);
 	}
 
 	

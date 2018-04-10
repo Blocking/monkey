@@ -11,10 +11,6 @@ import com.look.monkey.entity.Customer;
 import com.look.monkey.entity.QCustomer;
 import com.look.monkey.repository.Abstract.AbstractRepository;
 import com.querydsl.core.types.Projections;
-import com.querydsl.example.sql.QCinema;
-import com.querydsl.example.sql.QOriginalReport;
-import com.querydsl.example.sql.QOriginalReportProGrammeData;
-import com.querydsl.example.sql.QOriginalReportSessionData;
 import com.querydsl.jpa.sql.JPASQLQuery;
 import com.querydsl.sql.MySQLTemplates;
 
@@ -44,40 +40,6 @@ public class CustomerExtendRepository extends AbstractRepository<Customer> {
 	}
 	
 	
-	public List<MessageDTO> testSqlQueryDSL(){
-		
-		MySQLTemplates sqlTemplates = new MySQLTemplates();
-		JPASQLQuery<MessageDTO> query = new JPASQLQuery<>(em.get(), sqlTemplates);
-		 QOriginalReportSessionData qOriginalReportSessionData = QOriginalReportSessionData.originalReportSessionData;
-	        QCinema qCinema = QCinema.cinema;
-	        QOriginalReportProGrammeData qOriginalReportProGrammeData = QOriginalReportProGrammeData.originalReportProGrammeData;
-	        QOriginalReport qOriginalReport = QOriginalReport.originalReport;
-	        
-	        query.select(
-	        		Projections.bean(MessageDTO.class, qCinema.shortName,
-	    	                qOriginalReportProGrammeData.programmeSales.sum().as("programmeSales"),
-	    	                qOriginalReportProGrammeData.programmeOtherSales.sum().as("programmeOtherSales"),
-	    	          qOriginalReportSessionData.audienceCount.sum().as("audienceCount")
-	    	                )
-	        		
-	                )
-	        .from(qOriginalReportSessionData)
-	        .leftJoin(qOriginalReport).on(qOriginalReport.id.eq(qOriginalReportSessionData.originalReportId))
-	        .leftJoin(qOriginalReportProGrammeData).on(qOriginalReportProGrammeData.originalReportSessionDataId.eq(qOriginalReportSessionData.id))
-	        .leftJoin(qCinema).on(qOriginalReport.cinemaCode.eq(qCinema.code))
-	        .groupBy(qCinema.shortName);
-	       /* JPASQLQuery<MessageDTO> queryCount = new JPASQLQuery<>(em.get(), sqlTemplates);
-	        
-	        
-	        
-	        long count = queryCount.from(query, new QOriginalReportSessionData("a")).fetchCount();*/
-	        long count = query.clone().select(qCinema.shortName.countDistinct()).fetchOne();
-	        
-	        query.offset(0).limit(10);
-	        
-	        log.info("count:[{}]",count);
-		return query.fetch();
-	}
 	
 	
 	
