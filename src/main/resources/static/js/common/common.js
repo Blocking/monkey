@@ -3,7 +3,7 @@ function locationUrl(url,activeId){
 	if(currentActivedId != null && currentActivedId != "" && activeId != null && activeId != ""){
 		$("#"+currentActivedId).removeClass("active");
 		$("#"+activeId).addClass("active");
-		mainActiveId = activeId;
+		currentActivedId = activeId;
 	}
 	goUrl(url,null);
 }

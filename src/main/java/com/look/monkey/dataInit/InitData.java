@@ -28,8 +28,8 @@ public class InitData implements CommandLineRunner{
 	@Override
 	@Transactional
 	public void run(String... paramArrayOfString) throws Exception {
-		re.save(new Customer("佳佳","泰迪"));
-		re.save(new Customer("广磊","笨熊"));
+//		re.save(new Customer("佳佳","泰迪"));
+//		re.save(new Customer("广磊","笨熊"));
 		User user = new User();
 		user.setUsername("admin@123.com");
 		user.setPassword(this.passwordEncoder.encode("123456"));

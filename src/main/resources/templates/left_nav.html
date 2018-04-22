@@ -5,7 +5,8 @@
       <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
+          <a class="nav-link" href="/logout">Sign out</a>
+          <!-- <form class="nav-link" action="/logout" method="post"><button class="nav-link" type="submit" value="Sign out"></button></form> -->
         </li>
       </ul>
     </nav>
@@ -14,7 +15,7 @@
           <div class="sidebar-sticky">
        <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" onclick="locationUrl('/admin','dashboard')" id="dashboard">
+                <a class="nav-link active" onclick="locationUrl('/dashboard','dashboard')" id="dashboard">
                   <span data-feather="activity"></span>
                   	仪表盘 <span class="sr-only">(current)</span>
                 </a>

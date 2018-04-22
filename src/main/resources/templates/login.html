@@ -127,7 +127,7 @@ body {
     <form class="form-signin" th:action="@{/login}" method="post">
     
       <div class="text-center mb-4">
-        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <img class="mb-4" src="/img/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Blog</h1>
       </div>
       
@@ -154,6 +154,10 @@ body {
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         <label for="inputPassword">密码</label>
       </div>
+      
+      <input type="hidden"
+	name="${_csrf.parameterName}"
+	value="${_csrf.token}"/>
 
       <div class="checkbox mb-3">
         <label>

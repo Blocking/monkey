@@ -1,19 +1,8 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head th:insert="~{common :: common_header}">
-  
-  </head>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-   <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-
   <body>
-    <nav  th:insert="~{left_nav :: top}" ></nav> 
 
-    <div class="container-fluid">
-      <div class="row">
-		<nav  th:insert="~{left_nav :: copy}" ></nav> 
-
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
          <div class="col-md-12 order-md-1">
           <h4 class="mb-3">发布文章</h4>
           <hr class="mb-4">
@@ -66,34 +55,6 @@
 					<!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> -->
           </form>
         </div>
-       		
-        </main>
-      </div>
-    </div>
-
-	   <script>
-	   feather.replace();//图标
-	  var simplemde = new SimpleMDE({ element: document.getElementById("content") });
-	  // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
-        'use strict';
-
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        }, false);
-      })();
-	  </script>
+	   <script src="/js/article/edit.js"> </script>
   </body>
 </html>
