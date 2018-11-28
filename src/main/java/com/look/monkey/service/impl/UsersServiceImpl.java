@@ -15,8 +15,11 @@ import com.look.monkey.repository.UserRepository;
 import com.look.monkey.repository.Abstract.AbstractRepository;
 import com.look.monkey.service.UsersService;
 
+/**
+ * @author 12232
+ */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class UsersServiceImpl extends AbstractRepository<User> implements UsersService {
 
     @Autowired
