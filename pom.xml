@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.RELEASE</version>
+		<version>2.3.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -38,12 +38,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!--使用thymeleaf 作为页面模板引擎-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -55,6 +57,16 @@
 		  <artifactId>querydsl-apt</artifactId>
 		  <version>${querydsl.version}</version><!--$NO-MVN-MAN-VER$-->
 		  <scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>guava</artifactId>
+					<groupId>com.google.guava</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>javassist</artifactId>
+					<groupId>org.javassist</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 		  <groupId>com.querydsl</groupId>
@@ -83,31 +95,6 @@
 		  <groupId>org.springframework.boot</groupId>
 		  <artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-        <!-- js相关 -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>sockjs-client</artifactId>
-            <version>1.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>stomp-websocket</artifactId>
-            <version>2.3.3</version>
-        </dependency>
-       <!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
-		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>bootstrap</artifactId>
-		    <version>4.0.0-2</version>
-		</dependency>
-      <!-- https://mvnrepository.com/artifact/org.webjars/jquery -->
-		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>jquery</artifactId>
-		    <version>3.3.1</version>
-		</dependency>
-
-         <!-- js相关 -->
 	</dependencies>
 
 	<build>
@@ -157,7 +144,7 @@
 			<properties>
 				<!-- default Spring profiles -->
 				<spring.profiles.active>dev</spring.profiles.active>
-				<datasource.url>jdbc:h2:mem:demo_db;MVCC=TRUE;LOCK_TIMEOUT=10000</datasource.url>
+				<datasource.url>jdbc:h2:mem:demo_db;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=10000</datasource.url>
 				<datasource.driver>org.h2.Driver</datasource.driver>
 				<datasource.username>sa</datasource.username>
 				<datasource.password></datasource.password>
@@ -167,7 +154,8 @@
 			<dependencies>
 				<dependency> 
 					<groupId>com.h2database</groupId> 
-					<artifactId>h2</artifactId> 
+					<artifactId>h2</artifactId>
+					<scope>runtime</scope>
 				</dependency> 
 			</dependencies>
 		</profile>
@@ -176,11 +164,11 @@
 			<properties>
 				<!-- default Spring profiles -->
 				<spring.profiles.active>prod</spring.profiles.active>
-				<datasource.url>jdbc:mysql://localhost:3306/monkey?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;autoReconnect=true</datasource.url>
+				<datasource.url>jdbc:mysql://117.78.0.112:3306/monkey?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;autoReconnect=true</datasource.url>
 				<datasource.driver>com.mysql.jdbc.Driver</datasource.driver>
 				<datasource.username>root</datasource.username>
-				<datasource.password>root</datasource.password>
-				<datasource.dialect>org.hibernate.dialect.MySQL57InnoDBDialect</datasource.dialect>
+				<datasource.password>root_Zxy</datasource.password>
+				<datasource.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</datasource.dialect>
 				<datasource.jpa.ddl-auto>update</datasource.jpa.ddl-auto>
 			</properties>
 			<dependencies>

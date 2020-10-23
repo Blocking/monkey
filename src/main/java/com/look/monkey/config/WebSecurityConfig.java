@@ -2,6 +2,7 @@ package com.look.monkey.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -25,9 +26,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //      .antMatchers("/**").permitAll()//暂时放开一切请求
 //      .antMatchers("/error").permitAll()   .logoutRequestMatcher(new AntPathRequestMatcher("logout", "GET"))
         http
+                .authorizeRequests()
+                .antMatchers( HttpMethod.GET, "/**").permitAll()
+                .and()
         .authorizeRequests()
          .anyRequest().authenticated()
-         .antMatchers("/", "/index").permitAll()
         .and()
         .formLogin()
         .loginPage("/login")
@@ -37,6 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .logout()
         .permitAll()
+
         .and().csrf().disable()//默认 csrf是开启的 这样会引发logout 失败   https://docs.spring.io/spring-security/site/docs/current/reference/html/csrf.html
         ;
     }

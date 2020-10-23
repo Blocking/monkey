@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: "monkey"
   profiles.active: "@spring.profiles.active@"
   datasource:
      url: "@datasource.url@"
@@ -9,15 +11,26 @@ spring:
      show-sql: true
      hibernate.ddl-auto: "@datasource.jpa.ddl-auto@"
      database-platform: "@datasource.dialect@"
-    
+  redis:
+    host: 117.78.0.112
+    port: 6379
+    timeout: 3000
+    lettuce:
+      pool:
+        max-active: 8
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1
+
 logging:
-  path: ./logs
   level:
     com.look: trace
     com.querydsl.jpa.impl: debug
+    web: debug
+    org.springframework.web.filter.CommonsRequestLoggingFilter: debug
 
 server:
   port: 8080
   servlet:
-    context-path: 
+    context-path:
 

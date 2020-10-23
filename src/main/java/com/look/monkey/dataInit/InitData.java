@@ -8,32 +8,36 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.look.monkey.entity.Customer;
 import com.look.monkey.entity.User;
-import com.look.monkey.repository.CustomerRepository;
-import com.look.monkey.repository.UserRepository;
+import com.look.monkey.repository.jpa.CustomerRepository;
+import com.look.monkey.repository.jpa.UserRepository;
 /**
  * 项目启动后 初始化数据
  */
 @Component
 public class InitData implements CommandLineRunner{
 	
-	@Autowired
-	private CustomerRepository re;
+	private final CustomerRepository re;
+
+	private final UserRepository userRepository;
+	private final PasswordEncoder passwordEncoder;
 
 	@Autowired
-	private UserRepository userRepository;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
-	 
+	public InitData(CustomerRepository re, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+		this.re = re;
+		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
+	}
+
+
 	@Override
-	@Transactional
+	@Transactional(rollbackFor= Exception.class)
 	public void run(String... paramArrayOfString) throws Exception {
-//		re.save(new Customer("佳佳","泰迪"));
-//		re.save(new Customer("广磊","笨熊"));
+		re.save(new Customer("佳佳","泰迪"));
+		re.save(new Customer("广磊","笨熊"));
 		User user = new User();
 		user.setUsername("admin@123.com");
 		user.setPassword(this.passwordEncoder.encode("123456"));
-//		userRepository.save(user);
+		userRepository.save(user);
 	}
 
 	

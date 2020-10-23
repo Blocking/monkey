@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.look.monkey.entity.QUser;
 import com.look.monkey.entity.User;
-import com.look.monkey.repository.UserRepository;
-import com.look.monkey.repository.Abstract.AbstractRepository;
+import com.look.monkey.repository.jpa.UserRepository;
+import com.look.monkey.repository.jpa.Abstract.AbstractRepository;
 import com.look.monkey.service.UsersService;
 
 /**
