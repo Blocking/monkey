@@ -15,7 +15,7 @@ public class RedisConfig {
     public LettuceConnectionFactory redisConnectionFactory() {
 
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("117.78.0.112", 6379);
-        redisStandaloneConfiguration.setPassword("zhangxiaoyuRedis312231");
+        redisStandaloneConfiguration.setPassword("");
         return new LettuceConnectionFactory(redisStandaloneConfiguration);
     }
 }
